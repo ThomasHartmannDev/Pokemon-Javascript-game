@@ -33,6 +33,17 @@ Project made with a course by Chris Courses, youtube link at the end of the Read
 - [ ] Draw battleBackground
 - [ ] add battle sprites
 
+---
+# Youtube Video
+This project follow this video: https://www.youtube.com/watch?v=yP5DKzriqXA
+Many thanks to Chris courses who made this content available completely free!
+
+# Sprites & Programms
+Google Drive Assets - https://drive.google.com/drive/folders/1cbdyXiO7IlIDgSDul6yMvFrJ-acQgJjf
+Download Tiled - https://www.mapeditor.org/download.html
+Tiles - https://cypor.itch.io/12x12-rpg-tileset
+Monsters - https://pixel-boy.itch.io/ninja-adventure-asset-pack
+
 
 
 
