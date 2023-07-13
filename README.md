@@ -1,9 +1,9 @@
 # Pokemon-Javascript game
-    A pokemon based game made in HTML and Javascript.
+A pokemon based game made in HTML and Javascript.
 
-    All Sprites and programs using it will be listed at the end of this Readme
+All Sprites and programs using it will be listed at the end of this Readme
 
-    Project made with a course by Chris Courses, youtube link at the end of the Readme.
+Project made with a course by Chris Courses, youtube link at the end of the Readme.
 
 ## To-Do List
 #### Map Creation with Tiled Map Editor
