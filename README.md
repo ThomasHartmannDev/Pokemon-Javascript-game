@@ -7,11 +7,13 @@ Project made with a course by Chris Courses, youtube link at the end of the Read
 
 ## To-Do List
 #### Map Creation with Tiled Map Editor
-- [ ] Download and Setup
-    - [ ] Find Assets
-    - [ ] Download Tiled
-    - [ ] Import into Project
-- [ ] Tile Layering for Ocean and Landmasses
+- [x] Download and Setup
+    - [x] Find Assets
+    - [x] Download Tiled
+    - [x] Import into Project
+- [X] Tile Layering for Ocean and Landmasses
+- [ ] Tile Layering for a Plateua
+- [ ] Tile Layering for a House
 - [ ] Layering and Playcement of Trees
 - [ ] Landscape Details
 - [ ] Collisions and Map Boundaries
