@@ -12,18 +12,18 @@ Project made with a course by Chris Courses, youtube link at the end of the Read
     - [x] Download Tiled
     - [x] Import into Project
 - [X] Tile Layering for Ocean and Landmasses
-- [ ] Tile Layering for a Plateua
-- [ ] Tile Layering for a House
-- [ ] Layering and Playcement of Trees
-- [ ] Landscape Details
-- [ ] Collisions and Map Boundaries
-- [ ] Foreground Layers
-- [ ] Exporting Layers for Project Import
+- [x] Tile Layering for a Plateua
+- [x] Tile Layering for a House
+- [x] Layering and Playcement of Trees
+- [x] Landscape Details
+- [x] Collisions and Map Boundaries
+- [x] Foreground Layers
+- [x] Exporting Layers for Project Import
 ---
 #### Player and Map Development:
-- [ ] Project Setup
-- [ ] Import and render map
-- [ ] Player creation
+- [x] Project Setup
+- [x] Import and render map
+- [x] Player creation
 - [ ] Move player through map on keydown
 - [ ] Player-to-map-boundary collisions
 - [ ] Foreground objects
