@@ -24,7 +24,7 @@ Project made with a course by Chris Courses, youtube link at the end of the Read
 - [x] Project Setup
 - [x] Import and render map
 - [x] Player creation
-- [ ] Move player through map on keydown
+- [x] Move player through map on keydown
 - [ ] Player-to-map-boundary collisions
 - [ ] Foreground objects
 - [ ] Player moment animation

@@ -4,6 +4,7 @@ const ctx = canvas.getContext('2d'); // Context from canvas
 // Setting up the width&height from canvas
 canvas.width = 1024;
 canvas.height = 576;
+const offset = {x:-735, y:-600}
 
 const collisionsMap = [];
 //For loop to create a Array from Arrays to create the CollisionsMap
@@ -13,6 +14,8 @@ for(let i= 0; i < collisions.length; i+=70){
 }
 
 class Boundary{
+    static width = 48;
+    static height = 48;
     constructor({position}){
         this.position = position;
         this.width = 48;
@@ -28,7 +31,13 @@ class Boundary{
 const boundaries = [];
 collisionsMap.forEach((row, i) =>{
     row.forEach((Symbol, j) =>{
-        boundaries.push(new Boundary({position:{x:0,y:0}}));
+        if(Symbol === 1025){
+            boundaries.push(new Boundary({position:{
+                x:j * Boundary.width + offset.x, 
+                y:i * Boundary.height + offset.y
+            }}));
+        }
+        
     })
 });
 
@@ -51,43 +60,85 @@ let lastKey = '';
 //Class to create a object and allow us to create more image with movement.
 class Sprite {
     //Constructor to make sure that we have always a Position and a Image.
-    constructor({position, velocity, image}){
+    constructor({position, velocity, image, frames = {max: 1}}){
         this.position = position;
         this.image = image;
+        this.frames = frames;
+        this.image.onload = ()=>{
+            this.width = this.image.width / this.frames.max;
+            this.height = this.image.height;
+        }
+       
+        
+        
     }
     // Method from the class to Draw the on the canvas
     draw(){
-        ctx.drawImage(this.image, this.position.x, this.position.y)
-    }
-    
-}
-// Creating the background.
-const background = new Sprite({position:{x:-735,y:-600}, image: backgroungImage});
+        ctx.drawImage(
+            //Selecting the image
+            this.image,
+            //Cropping image
+            0,
+            0,
+            this.image.width / this.frames.max,
+            this.image.height,
+            this.position.x,
+            this.position.y,
+            //Location - Center canvas
 
+            this.image.width / this.frames.max,
+            this.image.height
+        );
+    }
+  //  (canvas.width/2) - (this.image.width / 4) / 2, 
+  //  (canvas.height/2) - (this.image.height / 2),
+}
+
+const player = new Sprite({
+    position:{
+        x:(canvas.width/2) - (192 / 4) / 2,
+        y:(canvas.height/2) - (68 / 2),
+    },
+    image: playerImage,
+    frames:{max:4}
+})
+
+// Creating the background.
+const background = new Sprite({position:{x:offset.x,y:offset.y}, image: backgroungImage});
+
+//List of everything thats going to move.
+const movables = [background, ...boundaries]
+//Function to test the player and boundaries collision
+function rectangularCollision({rectangle1, rectangle2}){
+    return (
+        rectangle1.position.x + rectangle1.width >= rectangle2.position.x &&
+        rectangle1.position.x <= rectangle2.position.x + rectangle2.width &&
+        rectangle1.position.y <= rectangle2.position.y + rectangle2.height &&
+        rectangle1.position.y + rectangle1.height >= rectangle2.position.y
+    );
+}
 // animation function
 function animate(){
     window.requestAnimationFrame(animate);
-    //Setting up the background and location
-    background.draw()
-    ctx.drawImage(playerImage,
-        //Cropping image
-        0,
-        0,
-        playerImage.width / 4,
-        playerImage.height,
-
-        //Location - Center canvas
-        (canvas.width/2) - (playerImage.width / 4) / 2, 
-        (canvas.height/2) - (playerImage.height / 2),
-        playerImage.width / 4,
-        playerImage.height
-    );
-    
+    //Setting up the background 
+    background.draw();
+    boundaries.forEach((boundary) => { 
+        boundary.draw();
+        
+        if(rectangularCollision({
+            rectangle1: player, 
+            rectangle2: boundary})
+        ) {
+           console.log('asas');
+        }
+    });
+    //Setting up the player
+    player.draw();
     //Creating the "player movement" using the ilusion from the map moving
-    if(keys.w.pressed && lastKey === 'w'){background.position.y = background.position.y + 3} 
-    else if (keys.s.pressed && lastKey === 's'){background.position.y = background.position.y - 3}
-    else if (keys.a.pressed && lastKey === 'a'){background.position.x = background.position.x + 3}
-    else if (keys.d.pressed && lastKey === 'd'){background.position.x = background.position.x - 3}
+    if(keys.w.pressed && lastKey === 'w'){movables.forEach(movables => {movables.position.y += 3});} 
+    else if (keys.s.pressed && lastKey === 's'){movables.forEach(movables => {movables.position.y -= 3});}
+    else if (keys.a.pressed && lastKey === 'a'){movables.forEach(movables => {movables.position.x += 3});}
+    else if (keys.d.pressed && lastKey === 'd'){movables.forEach(movables => {movables.position.x -= 3});}
         
 }
 
