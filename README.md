@@ -25,8 +25,8 @@ Project made with a course by Chris Courses, youtube link at the end of the Read
 - [x] Import and render map
 - [x] Player creation
 - [x] Move player through map on keydown
-- [ ] Player-to-map-boundary collisions
-- [ ] Foreground objects
+- [x] Player-to-map-boundary collisions
+- [X] Foreground objects
 - [ ] Player moment animation
 ---
 #### Battle Sequences:
